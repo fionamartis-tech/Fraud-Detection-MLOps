@@ -10,7 +10,7 @@ devices=["Phone","Laptop","Tablet"]
 
 def generate_transaction():
     return{
-        "transaction_id":str(uuid.uuid4())[:8],
+        "transaction_id":str(uuid.uuid4()),
         "customer_id":random.choice(customer),
         "amount":round(random.uniform(500,50000),2),
         "merchant":random.choice(merchants),
@@ -19,7 +19,7 @@ def generate_transaction():
         "timestamp":datetime.now(timezone.utc).isoformat()
     }
 
-while True:
+if "__name__"=="__main__":
     transaction=generate_transaction()
-    print(transaction)
     time.sleep(2)
+    
