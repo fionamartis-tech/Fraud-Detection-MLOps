@@ -10,7 +10,7 @@ devices=["Phone","Laptop","Tablet"]
 
 def generate_transaction():
     return{
-        "transaction_id":str(uuid.uuid4()),
+        "transaction_id":str(uuid.uuid4())[:8],
         "customer_id":random.choice(customer),
         "amount":round(random.uniform(500,50000),2),
         "merchant":random.choice(merchants),
