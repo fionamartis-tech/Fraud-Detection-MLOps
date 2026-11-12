@@ -18,7 +18,7 @@ def create_database():
         )
         # Create quanrantine table to store rejected transactions
         conn.execute("""
-         CREATE TABLE IF NOT EXISTS quarantine_transactions(
+         CREATE TABLE IF NOT EXISTS quarantined_transactions(
          id  INTEGER PRIMARY KEY AUTOINCREMENT,
          transaction_id TEXT,
          raw_data TEXT,
