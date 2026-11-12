@@ -17,7 +17,7 @@ process_transaction(negative)
 
 # case 3: missing required field  (custmomer_id)
 missing_field=generate_transaction()
-missing_field["customer_id"]="None"
+missing_field["customer_id"]=None
 process_transaction(missing_field)
 
 #case 4: duplicate transaction
