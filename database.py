@@ -23,7 +23,7 @@ def create_database():
          transaction_id TEXT,
          raw_data TEXT,
          rejection_reason TEXT NOT NULL,
-         rejection_at TEXT NOT NULL)""")
+         rejected_at TEXT NOT NULL)""")
     print("Database and quarantine tables are ready at:",DB_PATH)
 
 if __name__=="__main__":
