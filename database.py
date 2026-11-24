@@ -51,6 +51,16 @@ def create_database():
             )
         """)
 
+        conn.execute("""
+                CREATE TABLE IF NOT EXISTS fraud_prediction(
+                transaction_id TEXT PRIMARY KEY,
+                fraud_score REAL NOT NULL,
+                is_suspicious INTEGER NOT NULL,
+                model_version TEXT NOT NULL,
+                predicted_at TEXT NOT NULL,
+                FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id))
+        """)
+
     print("Database and tables are ready at:", DB_PATH)
 
 
