@@ -52,13 +52,17 @@ def calculate_features(conn, transaction):
         current_time.isoformat()
     )).fetchone()
 
-    avg_prior_amount = history[0]
+    # The first transaction for a customer has no historical average. Store
+    # 0.0 as the no-history baseline because transaction_features requires
+    # avg_prior_amount to be NOT NULL.
+    avg_prior_amount = (
+        float(history[0]) if history[0] is not None else 0.0
+    )
 
     # 3. Amount compared with historical average
     amount_ratio = (
     transaction["amount"] / avg_prior_amount
-    if avg_prior_amount is not None
-    and avg_prior_amount > 0
+    if avg_prior_amount > 0
     else 0.0
     )   
 
